@@ -1,0 +1,12 @@
+{
+  "name": "it_online_learning_project_04",
+  "version": "1.0.0",
+  "description": "js/html/cdd_project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Chris Pepper",
+  "license": "ISC"
+}
