@@ -4,10 +4,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project_04</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_basket" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="display"></div>
+    <header>
+      <h1>Icon</h1>
+      <h3>Icon<br> Discount Tech Sales</h3>
+      <button class="btn" id="basket-icon-btn">
+        <span class="material-symbols-outlined basket-icon">
+        shopping_basket
+        </span>
+      </button>
+    </header>
+    <div class="display">
+      <div class="product-card">
+        <h3>Radio</h3>
+        <p>£23.99</p>
+        <img src="./data/imgs/img1.jpg" alt="" />
+        <button
+          class="btn"
+          onclick="addToCart('Radio', 23.99, './data/imgs/img1.jpg')"
+        >
+          Buy
+        </button>
+      </div>
+      <div class="product-card">
+        <h3>Headphones</h3>
+        <p>£32.99</p>
+        <img src="./data/imgs/img3.jpg" alt="" />
+        <button
+        class="btn"
+        onclick="addToCart('Headphones', 32.99, './data/imgs/img2.jpg')"
+        >
+        Buy
+      </button>
+    </div>
+      <div class="product-card">
+        <h3>Phone</h3>
+        <p>£230.99</p>
+        <img src="./data/imgs/img2.jpg" alt="" />
+        <button
+        class="btn"
+        onclick="addToCart('Phone', 230.99, './data/imgs/img2.jpg')"
+        >
+        Buy
+      </button>
+    </div>
+      </div>
+    </div>
     <footer id="footer">
       <p>&copy; Chris Pepper <span id="date"></span></p>
     </footer>
