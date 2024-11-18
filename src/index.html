@@ -24,7 +24,7 @@
         <img src="./data/imgs/img1.jpg" alt="" />
         <button
           class="btn"
-          onclick="addToCart('Radio', 23.99, './data/imgs/img1.jpg')"
+          onclick="addToCart(1, 'Radio', 23.99, './data/imgs/img1.jpg')"
         >
           Buy
         </button>
@@ -35,7 +35,7 @@
         <img src="./data/imgs/img3.jpg" alt="" />
         <button
         class="btn"
-        onclick="addToCart('Headphones', 32.99, './data/imgs/img2.jpg')"
+        onclick="addToCart(2, 'Headphones', 32.99, './data/imgs/img2.jpg')"
         >
         Buy
       </button>
@@ -46,13 +46,19 @@
         <img src="./data/imgs/img2.jpg" alt="" />
         <button
         class="btn"
-        onclick="addToCart('Phone', 230.99, './data/imgs/img2.jpg')"
+        onclick="addToCart(3, 'Phone', 230.99, './data/imgs/img2.jpg')"
         >
         Buy
       </button>
     </div>
+    <div class="hidden-ele">
+        <div class="basket">
+          <p>test</p>
+        </div>
       </div>
     </div>
+      </div>
+      
     <footer id="footer">
       <p>&copy; Chris Pepper <span id="date"></span></p>
     </footer>
