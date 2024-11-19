@@ -7,29 +7,11 @@ let id1 = 0;
 let id2 = 0;
 let id3 = 0;
 
+let cartArray = [];
+let jsxArray = [];
+
 dateEle.innerHTML = new Date().getFullYear();
 
-// async function loadData() {
-//   try {
-//     const res = await fetch('./data/items.json');
-//     const data = await res.json();
-//     console.log(data);
-
-//     displayEle.innerHTML = data
-//       .map((i) => {
-//         return `<div class="product-card">
-//           <h3>${i.productName}</h3>
-//           <p>£${i.price}</p>
-//           <img src="./data/${i.img}" alt="">
-//         </div>`;
-//       })
-//       .join('');
-//   } catch (err) {
-//     console.error(`Error loading JSON Data: ${err}`);
-//   }
-// }
-// loadData();
-let cartArray = [];
 function addToCart(id, name, cost, imgUrl) {
   console.log(`${id}\n${name}\n${cost}\n${imgUrl}`);
   let productObject = {
@@ -45,6 +27,7 @@ function addToCart(id, name, cost, imgUrl) {
 basketBtn.addEventListener('click', () => {
   if (hiddenEle.style.display != 'flex') {
     checkCart();
+    // getProducts();
     hiddenEle.style.display = 'flex';
   } else {
     hiddenEle.style.display = 'none';
@@ -57,15 +40,48 @@ function checkCart() {
   for (let i = 0; i < cartArray.length; i++) {
     if (cartArray[i].productId === idArray[0]) {
       id1 += 1;
+      if (id1 === 1) {
+        jsxArray.push(cartArray[i]);
+      }
     } else if (cartArray[i].productId === idArray[1]) {
       id2 += 1;
+      if (id2 === 1) {
+        jsxArray.push(cartArray[i]);
+      }
     } else if (cartArray[i].productId === idArray[2]) {
       id3 += 1;
+      if (id3 === 1) {
+        jsxArray.push(cartArray[i]);
+      }
     } else {
-      console.log(`${cartArray[i]} unknown product`);
+      alert(`${cartArray[i]} unknown product`);
     }
   }
-  console.log(id1);
-  console.log(id2);
-  console.log(id3);
+}
+
+function addQty() {
+  for (let i = 0; i < jsxArray.length; i++) {
+    if (jsxArray[i].productId === 1) {
+      jsxArray[i].qty = id1;
+    }
+  }
+}
+
+function getProducts() {
+  addQty();
+  document.querySelector('.basket').innerHTML = jsxArray
+    .map((item) => {
+      return `
+              <div class="cart-container">
+              <h4 class="cart-item">${item.productName}</h4>
+              <img src="${item.productImg}" alt="Item-img" class="cart-item">
+              <button class="btn">-</button>
+              <p class="cart-item">${item.qty}</p>
+              <button class="btn">+</button>
+              <p class="cart-item">Total cost</p>
+              </div>
+              <hr>
+              `;
+    })
+    .join('');
 }
