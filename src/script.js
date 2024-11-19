@@ -21,12 +21,22 @@ function addToCart(id, name, cost, imgUrl) {
     productImg: imgUrl,
     qty: 1,
   };
+  if (productObject.productId === 1) {
+    id1 += 1;
+  } else if (productObject.productId === 2) {
+    id2 += 1;
+  } else if (productObject.productId === 3) {
+    id3 += 1;
+  } else {
+    alert(`${productObject}: Unknown ID`);
+  }
   cartArray.push(productObject);
+  checkCart();
+  console.log(cartArray, id1, id2, id3);
 }
 
 basketBtn.addEventListener('click', () => {
   if (hiddenEle.style.display != 'flex') {
-    checkCart();
     // getProducts();
     hiddenEle.style.display = 'flex';
   } else {
@@ -36,20 +46,16 @@ basketBtn.addEventListener('click', () => {
 
 function checkCart() {
   const idArray = [1, 2, 3];
-
   for (let i = 0; i < cartArray.length; i++) {
     if (cartArray[i].productId === idArray[0]) {
-      id1 += 1;
       if (id1 === 1) {
         jsxArray.push(cartArray[i]);
       }
     } else if (cartArray[i].productId === idArray[1]) {
-      id2 += 1;
       if (id2 === 1) {
         jsxArray.push(cartArray[i]);
       }
     } else if (cartArray[i].productId === idArray[2]) {
-      id3 += 1;
       if (id3 === 1) {
         jsxArray.push(cartArray[i]);
       }
