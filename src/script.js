@@ -66,29 +66,45 @@ function addQty() {
 function getProducts() {
   addQty();
   getTotal();
+
   if (jsxArray.length === 0) {
     document.querySelector('.basket').innerHTML = `<h1>Basket Empty</h1><hr>`;
   } else {
     document.querySelector('.basket').innerHTML = jsxArray
       .map((item) => {
+        let total = item.productCost * item.qty;
+        let displayTotal = total.toFixed(2);
         return `
               <div class="cart-container">
               <h4 class="cart-item">${item.productName}</h4>
               <img src="${item.productImg}" alt="Item-img" class="cart-item">
-              <div class="btn-container">
-                <button class="plus">-</button>
+              <div class="btn-container" key="${item.productId}">
+                <button class="minus">-</button>
                 <p class="cart-item item-qty">${item.qty}</p>
-                <button class="minus">+</button>
-              </div>
-                <p class="cart-item">Total cost:£${
-                  item.productCost * item.qty
-                }</p>
+                <button class="plus">+</button>
+              </div >
+                <p class="cart-item">Total cost:£${displayTotal}</p>
               </div>
               <hr>
               `;
       })
       .join('');
   }
+
+  document.querySelectorAll('.plus').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      console.log('click');
+      let parent = event.target.parentElement.getAttribute('key');
+      console.log(parent);
+
+      id1 += 1;
+      console.log(id1);
+      console.log(jsxArray[0]);
+      addQty();
+      getProducts();
+      console.log(jsxArray[0]);
+    });
+  });
 }
 
 function getTotal() {
