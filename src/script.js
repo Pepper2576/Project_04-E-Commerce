@@ -62,7 +62,6 @@ function addQty() {
   }
 }
 
-// add a function that adds and removes qty and if qty = 0 delete (slice(indexNum, howManyElements)) to it
 function getProducts() {
   addQty();
   getTotal();
@@ -92,17 +91,55 @@ function getProducts() {
   }
 
   document.querySelectorAll('.plus').forEach((btn) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (event) => {
       console.log('click');
       let parent = event.target.parentElement.getAttribute('key');
-      console.log(parent);
 
-      id1 += 1;
-      console.log(id1);
-      console.log(jsxArray[0]);
-      addQty();
-      getProducts();
-      console.log(jsxArray[0]);
+      if (parent == 1) {
+        id1 += 1;
+        addQty();
+        getProducts();
+      } else if (parent == 2) {
+        id2 += 1;
+        addQty();
+        getProducts();
+      } else if (parent == 3) {
+        id3 += 1;
+        addQty();
+        getProducts();
+      } else {
+        console.log('nothing hit!');
+      }
+    });
+  });
+
+  document.querySelectorAll('.minus').forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+      console.log('click');
+      let parent = event.target.parentElement.getAttribute('key');
+
+      if (parent == 1) {
+        id1 -= 1;
+        if (id1 === 0) {
+          jsxArray = jsxArray.filter((item) => item.productId !== 1);
+        }
+        addQty();
+        getProducts();
+      } else if (parent == 2) {
+        id2 -= 1;
+        if (id2 === 0) {
+          jsxArray = jsxArray.filter((item) => item.productId !== 2);
+        }
+        addQty();
+        getProducts();
+      } else if (parent == 3) {
+        id3 -= 1;
+        if (id3 === 0) {
+          jsxArray = jsxArray.filter((item) => item.productId !== 3);
+        }
+        addQty();
+        getProducts();
+      }
     });
   });
 }
