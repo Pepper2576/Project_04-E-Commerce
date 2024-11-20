@@ -13,8 +13,6 @@ let jsxArray = [];
 dateEle.innerHTML = new Date().getFullYear();
 
 function addToCart(id, name, cost, imgUrl) {
-  //console.log(`${id}\n${name}\n${cost}\n${imgUrl}`);
-  const idArray = [1, 2, 3];
   let productObject = {
     productId: id,
     productName: name,
@@ -23,6 +21,7 @@ function addToCart(id, name, cost, imgUrl) {
     qty: 1,
   };
   cartArray.push(productObject);
+  console.log(cartArray);
 
   if (productObject.productId === 1) {
     id1 += 1;
@@ -40,8 +39,6 @@ function addToCart(id, name, cost, imgUrl) {
       jsxArray.push(productObject);
     }
   }
-  console.log(cartArray, id1, id2, id3);
-  console.log(jsxArray);
 }
 
 basketBtn.addEventListener('click', () => {
@@ -68,6 +65,7 @@ function addQty() {
 // add a function that adds and removes qty and if qty = 0 delete (slice(indexNum, howManyElements)) to it
 function getProducts() {
   addQty();
+  getTotal();
   if (jsxArray.length === 0) {
     document.querySelector('.basket').innerHTML = `<h1>Basket Empty</h1><hr>`;
   } else {
@@ -90,5 +88,27 @@ function getProducts() {
               `;
       })
       .join('');
+  }
+}
+
+function getTotal() {
+  let num1 = 0;
+  let num2 = 0;
+  let num3 = 0;
+  if (jsxArray.length === 0) {
+    document.querySelector('#sum-total').innerHTML = 0;
+  } else {
+    for (let i = 0; i < cartArray.length; i++) {
+      if (cartArray[i].productId === 1) {
+        num1 = id1 * cartArray[i].productCost;
+      } else if (cartArray[i].productId === 2) {
+        num2 = id2 * cartArray[i].productCost;
+      } else if (cartArray[i].productId === 3) {
+        num3 = id3 * cartArray[i].productCost;
+      }
+    }
+    let total = num1 + num2 + num3;
+    let totalFormat = total.toFixed(2);
+    document.querySelector('#sum-total').innerHTML = totalFormat;
   }
 }
