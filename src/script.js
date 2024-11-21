@@ -92,7 +92,6 @@ function getProducts() {
 
   document.querySelectorAll('.plus').forEach((btn) => {
     btn.addEventListener('click', (event) => {
-      console.log('click');
       let parent = event.target.parentElement.getAttribute('key');
 
       if (parent == 1) {
@@ -107,15 +106,12 @@ function getProducts() {
         id3 += 1;
         addQty();
         getProducts();
-      } else {
-        console.log('nothing hit!');
       }
     });
   });
 
   document.querySelectorAll('.minus').forEach((btn) => {
     btn.addEventListener('click', (event) => {
-      console.log('click');
       let parent = event.target.parentElement.getAttribute('key');
 
       if (parent == 1) {
